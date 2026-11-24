@@ -1,0 +1,4 @@
+cava
+dolphin
+firefox
+kitty

@@ -1,0 +1,138 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "margin-top": 8,
+    "margin-left": 20,
+    "margin-right": 20,
+    "spacing": 6,
+    "modules-left": ["hyprland/workspaces", "mpris"],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "network#speed", "privacy", "custom/camera", "custom/weather", "group/audio", "network",
+        "group/system", "custom/notifications", "tray"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "●"
+    },
+    "clock": {
+        "format": "  {:%a, %b %d · %H:%M}",
+        "format-alt": "  {:%A, %B %d, %Y}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>"
+    },
+    "mpris": {
+        "format": "  {title}",
+        "format-paused": "  {title}",
+        "max-length": 64,
+        "tooltip-format": "{artist} — {title} ({status})"
+    },
+    "group/system": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 200,
+            "transition-left-to-right": false
+        },
+        "modules": ["custom/system", "cpu", "memory", "idle_inhibitor"]
+    },
+    "custom/system": {
+        "format": "",
+        "tooltip": false
+    },
+    "privacy": {
+        "icon-size": 14,
+        "spacing": 6,
+        "modules": [{"type": "screenshare"}, {"type": "audio-in"}]
+    },
+    "custom/camera": {
+        "exec": "python3 \"${XDG_CONFIG_HOME:-$HOME/.config}/waybar/widgets.py\" camera",
+        "return-type": "json",
+        "interval": 3,
+        "hide-empty-text": true
+    },
+    "custom/notifications": {
+        "exec": "python3 \"${XDG_CONFIG_HOME:-$HOME/.config}/waybar/widgets.py\" notifications",
+        "return-type": "json",
+        "interval": 5,
+        "on-click": "dunstctl set-paused toggle"
+    },
+    "custom/weather": {
+        "exec": "python3 \"${XDG_CONFIG_HOME:-$HOME/.config}/waybar/widgets.py\" weather",
+        "return-type": "json",
+        "interval": 900
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "group/audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 180,
+            "transition-left-to-right": false
+        },
+        "modules": ["pulseaudio", "pulseaudio/slider"]
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "zero-on-mute": false,
+        "unmute-on-volume-change": false
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰝟  Muted",
+        "scroll-step": 1,
+        "max-volume": 100,
+        "tooltip-format": "{desc}\nClick for audio controls · Right-click to mute · Scroll to adjust",
+        "on-click": "python3 \"${XDG_CONFIG_HOME:-$HOME/.config}/waybar/audio.py\"",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": ["", "", ""]
+        }
+    },
+    "network": {
+        "format-wifi": "  {ipaddr}",
+        "format-ethernet": "󰈁  {ipaddr}",
+        "format-linked": "󰈂  {ifname}",
+        "format-disconnected": "󰖪  Offline",
+        "tooltip-format-wifi": "{essid} · {signalStrength}% · {ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ifname} · {ipaddr}/{cidr}"
+    },
+    "network#speed": {
+        "interval": 2,
+        "format": "↑{bandwidthUpBytesCompact} ↓{bandwidthDownBytesCompact}",
+        "format-linked": "",
+        "format-disconnected": "",
+        "tooltip-format-wifi": "{essid} · {signalStrength}% · {ipaddr}/{cidr}\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
+        "tooltip-format-ethernet": "{ifname} · {ipaddr}/{cidr}\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}"
+    },
+    "network#wifi": {
+        "interface": "wl*",
+        "interval": 5,
+        "format-wifi": "",
+        "format-linked": "",
+        "format-disconnected": "󰤭",
+        "format-disabled": "󰤮",
+        "tooltip-format-wifi": "{essid} · {signalStrength}%\nClick to manage Wi-Fi",
+        "tooltip-format-linked": "Wi-Fi connected · Waiting for an IP address\nClick to manage Wi-Fi",
+        "tooltip-format-disconnected": "Wi-Fi disconnected\nClick to manage Wi-Fi",
+        "tooltip-format-disabled": "Wi-Fi disabled\nClick to manage Wi-Fi",
+        "on-click": "kitty --title 'Network Manager' nmtui"
+    },
+    "cpu": {
+        "format": "  {usage}%"
+    },
+    "memory": {
+        "format": "󰍛  {percentage}%"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}

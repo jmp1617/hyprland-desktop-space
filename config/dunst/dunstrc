@@ -1,0 +1,41 @@
+[global]
+    origin = top-center
+    offset = (0, 8)
+    width = (280, 370)
+    gap_size = 8
+    padding = 12
+    horizontal_padding = 14
+    text_icon_padding = 10
+    frame_width = 1
+    corner_radius = 14
+    progress_bar_corner_radius = 4
+    icon_corner_radius = 5
+    font = Adwaita Sans 11
+    format = "<b>%s</b>\n%b"
+    icon_position = left
+    max_icon_size = 36
+    enable_recursive_icon_lookup = true
+    icon_theme = Papirus-Dark, Adwaita
+    highlight = "#f2bd9b"
+
+[urgency_low]
+    background = "#1c192b"
+    foreground = "#c9b9da"
+    frame_color = "#493e5c"
+    timeout = 10
+    default_icon = dialog-information
+
+[urgency_normal]
+    background = "#2a243b"
+    foreground = "#f2e8f5"
+    frame_color = "#493e5c"
+    timeout = 10
+    default_icon = dialog-information
+
+[urgency_critical]
+    background = "#2a243b"
+    foreground = "#f2e8f5"
+    frame_color = "#f4adc1"
+    highlight = "#f4adc1"
+    timeout = 0
+    default_icon = dialog-warning

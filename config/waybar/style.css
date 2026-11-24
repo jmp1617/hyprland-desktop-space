@@ -1,0 +1,173 @@
+@define-color sky #1c192b;
+@define-color surface #2a243b;
+@define-color border #493e5c;
+@define-color text #f2e8f5;
+@define-color muted #c9b9da;
+@define-color lavender #dbc4f6;
+@define-color peach #f2bd9b;
+@define-color rose #f4adc1;
+@define-color starlight #b9d8e8;
+
+* {
+    font-family: "Adwaita Sans", "Symbols Nerd Font Mono", sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background: alpha(@sky, 0.96);
+    border: 1px solid @border;
+    border-radius: 14px;
+    color: @text;
+}
+
+#workspaces {
+    margin-left: 5px;
+}
+
+#workspaces button {
+    min-width: 18px;
+    padding: 0 3px;
+    margin: 4px 1px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: @muted;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button label {
+    font-size: 10px;
+}
+
+#workspaces button:hover {
+    background: @surface;
+    box-shadow: none;
+}
+
+#workspaces button.active {
+    color: @peach;
+}
+
+#workspaces button.urgent {
+    color: @rose;
+}
+
+#clock,
+#mpris,
+#privacy,
+#custom-camera,
+#custom-notifications,
+#custom-system,
+#custom-weather,
+#idle_inhibitor,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#tray {
+    margin: 4px 0;
+    padding: 0 9px;
+    border-radius: 9px;
+    background: @surface;
+}
+
+#clock {
+    padding: 0 14px;
+    color: @peach;
+    font-weight: bold;
+}
+
+#idle_inhibitor,
+#pulseaudio {
+    color: @lavender;
+}
+
+#idle_inhibitor.activated {
+    color: @peach;
+}
+
+#network {
+    color: @starlight;
+}
+
+#network.disconnected,
+#pulseaudio.muted {
+    color: @rose;
+}
+
+#network.wifi.disconnected,
+#network.wifi.disabled {
+    color: @muted;
+}
+
+#tray {
+    margin-right: 5px;
+}
+
+tooltip {
+    background: @sky;
+    border: 1px solid @border;
+    border-radius: 9px;
+}
+
+tooltip label {
+    color: @text;
+}
+
+#mpris,
+#custom-system,
+#custom-notifications {
+    color: @lavender;
+}
+
+#mpris.paused,
+#custom-notifications.unavailable,
+#custom-weather.unavailable {
+    color: @muted;
+}
+
+#privacy,
+#custom-camera {
+    color: @rose;
+    background: @border;
+}
+
+#custom-weather {
+    color: @starlight;
+}
+
+#custom-notifications.paused {
+    color: @peach;
+    background: @border;
+}
+
+.drawer-child {
+    margin-right: 4px;
+}
+
+#pulseaudio-slider {
+    margin: 4px 4px 4px 0;
+    padding: 0 10px;
+    border-radius: 9px;
+    background: @surface;
+}
+
+#pulseaudio-slider trough {
+    min-width: 90px;
+    min-height: 5px;
+    border-radius: 6px;
+    background: @border;
+}
+
+#pulseaudio-slider highlight {
+    border-radius: 6px;
+    background: @lavender;
+}
+
+#pulseaudio-slider slider {
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 50%;
+    background: @peach;
+}
